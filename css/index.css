@@ -1,0 +1,338 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.header-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.header-links-first {
+    display: flex;
+    list-style-type: none;
+    margin-left: 1rem;
+}
+.header-links-first > li {
+    margin-right: 0.5rem;
+}
+.header-links-first > li > a {
+    text-decoration: none;
+    color: red;
+
+    padding-right: 1rem;
+    border-right: 1px solid black;
+}
+.header-links-first > li > .noborder {
+    border-right: none;
+}
+.header-links-opt {
+    text-decoration: none;
+    color: red;
+    padding-right: 1rem;
+    border-right: 1px solid black;
+}
+.noborder {
+    border-right: none;
+}
+.header-links-first > p {
+    margin-right: 1rem;
+    color: black;
+}
+
+.header-box {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    height: 6rem;
+    padding: 0rem 1rem;
+    align-items: center;
+}
+.header-box-title {
+    width: 50%;
+}
+.header-box-advertise {
+    width: 50%;
+    height: 80%;
+    border: 1px solid #dadada;
+    background-color: #e7e7e7;
+}
+.header-box-advertise > p {
+    height: 100%;
+    align-items: center;
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    color: #666666;
+    font-weight: bold;
+}
+.navbar {
+    margin-top: 1rem;
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+    background-color: #242424;
+    height: 2.5rem;
+}
+.navbar > li {
+    margin: auto 0.5rem;
+}
+.navbar > li > a {
+    color: white;
+    text-decoration: none;
+}
+
+.section-main {
+    display: flex;
+    width: 100%;
+}
+.section-main > .section-main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    border-right: 1px solid #eaeaea;
+    /* margin: 3rem 2rem; */
+}
+.main-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #feffff;
+    margin: 3rem 2rem;
+}
+.main-card > img {
+    order: 0;
+    width: 100%;
+}
+.main-card > h2 {
+    order: 1;
+    margin: 0.5rem auto;
+}
+.main-card > span {
+    order: 1;
+    color: #6d6d6d;
+}
+.main-card > p {
+    order: 1;
+    margin: 1rem 0;
+    color: #6d6d6d;
+    text-align: left;
+}
+.main-card > button {
+    width: 50%;
+    order: 1;
+    padding: 0.2rem;
+    background-color: #d81200;
+    color: white;
+    margin: 0.2rem;
+}
+.section-main-cards > .section-main-buttons {
+    margin-left: 2rem;
+}
+.div-create-posts {
+    width: 90%;
+}
+.create-post {
+    background: red;
+    padding: 0.3rem;
+    color: white;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+.div-posts > .form-posts {
+    border: 1px solid #e8e8e8;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    background: #eeeeee;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.div-posts > .form-posts > input {
+    font-size: 16px;
+    margin: 0.5rem;
+    width: 100%;
+}
+.div-posts > .form-posts > button {
+    background: red;
+    color: white;
+    padding: 0.3rem;
+}
+.section-main-cards > .section-main-buttons > button {
+    border: 0;
+    padding: 5px 8px;
+    background-color: #9f9f9f;
+    color: #ffffff;
+}
+.section-main-cards > .section-main-buttons > button:hover {
+    background-color: #e05f00;
+    cursor: pointer;
+}
+.section-main > .section-main-others {
+    width: 30%;
+}
+.section-main > .section-main-others > form {
+    border: 1px solid #e8e8e8;
+    margin-top: 1rem;
+    background: #eeeeee;
+    width: 100%;
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-main > .section-main-others > form > input {
+    width: 60%;
+    height: 60%;
+    border: 0;
+    margin-right: 0.3rem;
+}
+.section-main > .section-main-others > form > button {
+    width: 25%;
+    border: 0;
+    background-color: #dc1000;
+    color: white;
+    height: 60%;
+}
+.others-popular-posts,
+.others-photos,
+.others-video,
+.others-tags {
+    padding: 0 1.5rem;
+}
+.others-popular-posts > h4,
+.others-video > h4,
+.others-tags > h4 {
+    margin: 0.9rem auto;
+}
+.others-popular-posts > li {
+    list-style-type: none;
+    margin-left: 1rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #dadada;
+}
+.others-popular-posts > li > a {
+    text-decoration: none;
+    color: #808080;
+}
+
+.others-photos > h4 {
+    margin: 1rem auto;
+}
+.others-photos > .photos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.others-photos > .photos-grid > div > img {
+    width: 100%;
+    padding: 2%;
+}
+.others-video > img {
+    width: 100%;
+}
+.grid-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.grid-tags > div {
+    margin: 0.3rem;
+}
+.grid-tags > div > h4 {
+    margin-bottom: 0.5rem;
+}
+.grid-tags > div > ul {
+    list-style-type: none;
+    margin-left: 0.9rem;
+}
+.grid-tags > div > ul > li {
+    margin-bottom: 0.5rem;
+    color: #808080;
+}
+.grid-tags > div > ul > li:hover {
+    color: #dc1000;
+    cursor: pointer;
+}
+footer {
+    background-color: #252525;
+
+    margin-top: 2rem;
+}
+footer > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 1rem;
+}
+footer > div > p {
+    color: white;
+    margin: 0;
+    font-size: 12px;
+}
+footer > div > p > a {
+    color: white;
+    text-decoration: none;
+}
+footer > div > p > a:hover {
+    font-size: 1rem;
+    transition: 1s;
+}
+@media (max-width: 768px) {
+    .header-links {
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.7rem;
+    }
+    .header-links-first:nth-child(2) {
+        margin: 0.3rem;
+    }
+    .header-links-first:nth-child(2) > p {
+        display: flex;
+        align-items: flex-end;
+    }
+    .section-main {
+        flex-direction: column;
+    }
+    .section-main > .section-main-others {
+        width: 100%;
+    }
+    .section-main > .section-main-cards {
+        width: 100%;
+    }
+    .div-posts > .form-posts {
+        width: 90%;
+    }
+}
+@media (max-width: 1023.99px) {
+    .section-main > .section-main-cards {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 575px) {
+    .header-box {
+        flex-direction: column;
+        height: 8rem;
+    }
+    .header-box-title,
+    .header-box-advertise {
+        width: 100%;
+        height: 50%;
+    }
+    .header-box-title > h1 {
+        /* white-space: nowrap; */
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar {
+        display: none;
+    }
+    .header-links-first > li > a {
+        padding-right: 0.2rem;
+    }
+}

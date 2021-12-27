@@ -22,17 +22,15 @@ createPosts.addEventListener("click", (e) => {
     
     `;
     const form = document.querySelector(".form-posts");
-    const buttonForm = form.children[2];
-    buttonForm.addEventListener("click", (e) => {
-        console.log("Enviado");
-    });
-    console.log(buttonForm);
+    // const buttonForm = form.children[2];
+    // buttonForm.addEventListener("click", (e) => {
+    //     console.log("Enviado");
+    // });
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const title = form.elements[0].value;
         const description = form.elements[1].value;
-        console.log(title, description);
         fetch(`${url}/posts`, {
             method: "POST",
             body: JSON.stringify({
@@ -58,23 +56,13 @@ createPosts.addEventListener("click", (e) => {
                     "https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page107/the-web-news/images/_thumb1.jpg";
                 img.style = "height:200px";
 
-                const buttonRead = document.createElement("button");
-                buttonRead.textContent = "Continue Reading";
-
                 const buttonDeleted = document.createElement("button");
                 buttonDeleted.textContent = "Deleted Post";
                 buttonDeleted.classList = "btnDelete";
 
                 const container = document.createElement("div");
                 container.classList = "main-card";
-                container.append(
-                    img,
-                    title,
-                    description,
-                    id,
-                    buttonRead,
-                    buttonDeleted
-                );
+                container.append(img, title, description, id, buttonDeleted);
                 allItems.unshift(container);
                 contenedor.append(...allItems);
                 const x = 1;
@@ -137,13 +125,7 @@ function obtener(id) {
         element.addEventListener("click", (e) => {
             const idPost = e.target.parentNode.childNodes[2].innerHTML;
 
-            console.log("A borrar", idPost);
-            if (id === 1) {
-                console.log("Soy EL POST EDITADO", idPost);
-                borrar(idPost);
-            } else {
-                borrar(idPost);
-            }
+            borrar(idPost);
         });
     });
 
@@ -171,7 +153,6 @@ function borrar(id) {
                     const posicion = allItems.indexOf(items);
                     contenedor.removeChild(allItems[posicion]);
                     allItems.splice(posicion, 1);
-                    console.log(allItems);
                 }
             });
         });
@@ -179,10 +160,7 @@ function borrar(id) {
 async function viewComments(id) {
     const response = await fetch(`${url}/posts/${id}/comments`);
     const data = await response.json();
-    const title = document.createElement("h1");
-    title.textContent = "Comentarios:";
-    title.style = "margin-top:2rem";
-    title.style = "order:1";
+
     data.forEach((data) => {
         const name = document.createElement("h4");
         name.textContent = `Nombre: ${data.name}`;
@@ -200,7 +178,7 @@ async function viewComments(id) {
         allItems.forEach((items) => {
             if (items.children[2].innerHTML == id) {
                 const posicion = allItems.indexOf(items);
-                allItems[posicion].append(title, div);
+                allItems[posicion].append(div);
             }
         });
     });

@@ -3,11 +3,7 @@ const contenedor = document.querySelector(".section-main-cards");
 const createPosts = document.querySelector(".create-post");
 const allItems = [];
 let contador = 101;
-// let first = 0;
-// if (first === 0) {
-//     console.log("inicio");
-//     fetchData();
-// }
+
 createPosts.addEventListener("click", (e) => {
     const posts = document.querySelector(".div-posts");
     posts.innerHTML = `
@@ -57,6 +53,11 @@ createPosts.addEventListener("click", (e) => {
                 const description = document.createElement("p");
                 description.textContent = json.body;
 
+                const img = document.createElement("img");
+                img.src =
+                    "https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page107/the-web-news/images/_thumb1.jpg";
+                img.style = "height:200px";
+
                 const buttonRead = document.createElement("button");
                 buttonRead.textContent = "Continue Reading";
 
@@ -67,6 +68,7 @@ createPosts.addEventListener("click", (e) => {
                 const container = document.createElement("div");
                 container.classList = "main-card";
                 container.append(
+                    img,
                     title,
                     description,
                     id,
@@ -75,7 +77,6 @@ createPosts.addEventListener("click", (e) => {
                 );
                 allItems.unshift(container);
                 contenedor.append(...allItems);
-                console.log(allItems);
                 const x = 1;
                 obtener(x);
                 contador++;
@@ -99,9 +100,6 @@ async function fetchData() {
         const description = document.createElement("p");
         description.textContent = data.body;
 
-        // const buttonRead = document.createElement("button");
-        // buttonRead.textContent = "Continue Reading";
-
         const buttonDeleted = document.createElement("button");
         buttonDeleted.textContent = "Deleted Post";
         buttonDeleted.classList = "btnDelete";
@@ -112,14 +110,7 @@ async function fetchData() {
 
         const container = document.createElement("div");
         container.classList = "main-card";
-        container.append(
-            title,
-            description,
-            id,
-            // buttonRead,
-            buttonDeleted,
-            buttonComments
-        );
+        container.append(title, description, id, buttonDeleted, buttonComments);
         allItems.push(container);
     });
 
@@ -135,13 +126,10 @@ async function fetchData() {
         }
         x++;
     });
-
     contenedor.append(...allItems);
-
     obtener();
-    // first = 1;
 }
-fetchData();
+
 function obtener(id) {
     const btnDelete = document.querySelectorAll(".btnDelete");
 
@@ -152,11 +140,7 @@ function obtener(id) {
             console.log("A borrar", idPost);
             if (id === 1) {
                 console.log("Soy EL POST EDITADO", idPost);
-
-                // allItems.splice(idPost, 1);
                 borrar(idPost);
-                // borrar(idPost - 100);
-                // console.log(contenedor.childNodes);
             } else {
                 borrar(idPost);
             }
@@ -177,58 +161,29 @@ function obtener(id) {
     });
 }
 function borrar(id) {
-    console.log(id);
     fetch(`${url}/posts/${id}`, {
         method: "DELETE",
     })
         .then((res) => res.json())
         .then(() => {
-            // contenedor.removeChild(allItems[id - 1]);
-
             allItems.forEach((items) => {
                 if (items.children[2].innerHTML == id) {
-                    // const x = items.children[2].innerHTML - 1;
                     const posicion = allItems.indexOf(items);
                     contenedor.removeChild(allItems[posicion]);
                     allItems.splice(posicion, 1);
                     console.log(allItems);
-                    // contenedor.removeChild(allItems[x]);
-                    // allItems.splice(x, 1);
-                    // console.log(allItems);
                 }
             });
-
-            // console.log(contenedor.childNodes);
-            // function remove(allItems, item) {
-            //     let i = allItems.indexOf(allItems[item - contador]);
-            //     console.log(i);
-            //     if (i !== -1) {
-            //         contenedor.removeChild(allItems[i]);
-            //         allItems.splice(i, 1);
-            //         // console.log(allItems);
-            //         // console.log(contenedor.children);
-            //     } else {
-            //         console.log(i);
-            //     }
-            //     contador++;
-            //     console.log("Contador", contador);
-            // }
-            // remove(allItems, id);
-            // contenedor.removeChild(allItems[id - 1]);
-            // allItems.splice(id - 1, 1);
-            // console.log(allItems);
         });
 }
 async function viewComments(id) {
     const response = await fetch(`${url}/posts/${id}/comments`);
     const data = await response.json();
+    const title = document.createElement("h1");
+    title.textContent = "Comentarios:";
+    title.style = "margin-top:2rem";
+    title.style = "order:1";
     data.forEach((data) => {
-        console.log(data);
-
-        const title = document.createElement("h1");
-        title.textContent = "Comentarios:";
-        title.style = "margin-top:2rem";
-
         const name = document.createElement("h4");
         name.textContent = `Nombre: ${data.name}`;
 
@@ -239,23 +194,15 @@ async function viewComments(id) {
         body.textContent = `Mensaje: ${data.body}`;
 
         const div = document.createElement("div");
-        div.style = "order:1";
-        div.append(title, name, email, body);
+        div.style = "order:2";
+        div.append(name, email, body);
 
         allItems.forEach((items) => {
             if (items.children[2].innerHTML == id) {
                 const posicion = allItems.indexOf(items);
-                allItems[posicion].append(div);
+                allItems[posicion].append(title, div);
             }
         });
-
-        // contenedor.append(...allItems[id - 1]);
     });
-    // const buttonCerrar = document.createElement("button");
-    // buttonCerrar.textContent = "Close comment";
-    // allItems[id - 1].append(buttonCerrar);
-
-    // buttonCerrar.addEventListener("click", () => {
-    //     console.log(allItems[id - 1]);
-    // });
 }
+fetchData();

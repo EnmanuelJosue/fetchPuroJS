@@ -107,7 +107,7 @@
 }
 .main-card > h2 {
     order: 1;
-    margin: 0.5rem auto;
+    margin-left: 0.3rem;
 }
 .main-card > span {
     order: 1;
